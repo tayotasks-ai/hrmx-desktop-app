@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>HRMS X Agent</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <div class="brand">
+      <div class="logo">HX</div>
+      <div>
+        <p class="brand-title">HRMS X Agent</p>
+        <p class="brand-sub">Active-time &amp; optional screenshot monitoring</p>
+      </div>
+    </div>
+
+    <!-- Login -->
+    <section id="view-login" class="view">
+      <h2>Sign in</h2>
+      <p class="hint">Use the same email and password you use for HRMS X on the web.</p>
+      <label>Email</label>
+      <input id="login-email" type="email" autocomplete="username" />
+      <label>Password</label>
+      <input id="login-password" type="password" autocomplete="current-password" />
+      <p id="login-error" class="error hidden"></p>
+      <button id="login-submit" class="primary">Sign in</button>
+    </section>
+
+    <!-- OTP (email 2FA, if the account has it enabled) -->
+    <section id="view-otp" class="view hidden">
+      <h2>Enter your code</h2>
+      <p class="hint">We emailed a one-time code to your address.</p>
+      <label>Code</label>
+      <input id="otp-code" type="text" inputmode="numeric" maxlength="8" />
+      <p id="otp-error" class="error hidden"></p>
+      <button id="otp-submit" class="primary">Verify</button>
+    </section>
+
+    <!-- Screenshot consent (only shown if the org has screenshots enabled
+         and this employee hasn't already answered) -->
+    <section id="view-consent" class="view hidden">
+      <h2>Screenshot monitoring</h2>
+      <p class="hint">
+        Your organisation has turned on optional screenshot monitoring. This is separate from
+        active-time tracking, which is already on. If you agree, this agent will periodically
+        capture a screenshot of your screen and send it to HR. You can change your mind later
+        from the Status screen.
+      </p>
+      <p id="consent-error" class="error hidden"></p>
+      <div class="button-row">
+        <button id="consent-decline" class="secondary">Not now</button>
+        <button id="consent-accept" class="primary">I agree</button>
+      </div>
+    </section>
+
+    <!-- Status (signed in) -->
+    <section id="view-status" class="view hidden">
+      <h2>You're signed in</h2>
+      <p class="hint" id="status-user"></p>
+
+      <div class="status-card">
+        <div class="status-dot"></div>
+        <div>
+          <p class="status-label">Agent status</p>
+          <p class="status-value">Active — tracking active time</p>
+        </div>
+      </div>
+
+      <p class="hint" id="status-active-time"></p>
+
+      <div class="status-card" id="status-screenshot-card">
+        <div>
+          <p class="status-label">Screenshot monitoring</p>
+          <p class="status-value" id="status-screenshot-value">Checking…</p>
+        </div>
+        <button id="status-screenshot-toggle" class="link-button hidden"></button>
+      </div>
+
+      <p class="hint small">
+        This agent only tracks activity while it's running on this device, and never captures
+        keystrokes. You can quit it any time from the tray icon.
+      </p>
+
+      <button id="logout-submit" class="secondary">Log out</button>
+    </section>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>
