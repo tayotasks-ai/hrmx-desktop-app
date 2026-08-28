@@ -1,4 +1,4 @@
-// HRMS X Agent — Electron main process.
+// WorkDesk Agent — Electron main process.
 //
 // Scope, deliberately: this agent does system-wide ACTIVE/IDLE time
 // detection (via Electron's built-in powerMonitor, which reads real OS idle
@@ -100,19 +100,19 @@ function updateTray(statusLabel) {
   const menu = Menu.buildFromTemplate([
     { label: `Status: ${statusLabel}`, enabled: false },
     { type: 'separator' },
-    { label: 'Open HRMS X Agent', click: () => { mainWindow.show(); } },
+    { label: 'Open WorkDesk Agent', click: () => { mainWindow.show(); } },
     { label: 'Log out', click: handleLogout },
     { type: 'separator' },
     { label: 'Quit', click: () => { app.isQuitting = true; app.quit(); } },
   ]);
   tray.setContextMenu(menu);
-  tray.setToolTip(`HRMS X Agent — ${statusLabel}`);
+  tray.setToolTip(`WorkDesk Agent — ${statusLabel}`);
 }
 
 function createTray() {
   const icon = nativeImage.createEmpty(); // simple/blank tray icon; swap for a real asset before distributing
   tray = new Tray(icon.isEmpty() ? nativeImage.createFromNamedImage('NSStatusAvailable', [0, 0, 0, 1]) : icon);
-  tray.setToolTip('HRMS X Agent');
+  tray.setToolTip('WorkDesk Agent');
   updateTray(getSession() ? 'Signed in' : 'Not signed in');
   tray.on('click', () => { mainWindow.show(); });
 }

@@ -1,6 +1,6 @@
-# HRMS X Agent
+# WorkDesk Agent
 
-A small Electron desktop app employees install and sign in to with their normal HRMS X
+A small Electron desktop app employees install and sign in to with their normal WorkDesk
 credentials. While running, it:
 
 - Tracks active/idle time system-wide (using Electron's built-in OS idle detection — not a
