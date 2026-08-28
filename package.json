@@ -32,7 +32,8 @@
       {
         "provider": "github",
         "owner": "tayotasks-ai",
-        "repo": "hrmx-desktop-app"
+        "repo": "hrmx-desktop-app",
+        "releaseType": "release"
       }
     ],
     "mac": {
